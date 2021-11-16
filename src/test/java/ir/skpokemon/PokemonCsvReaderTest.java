@@ -1,6 +1,6 @@
-package ir.skpokemon.loader;
+package ir.skpokemon;
 
-import ir.skpokemon.loader.model.Pokemon;
+import ir.skpokemon.model.Pokemon;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

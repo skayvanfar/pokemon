@@ -1,8 +1,9 @@
-package ir.skpokemon.loader;
+package ir.skpokemon;
 
-import ir.skpokemon.loader.model.Pokemon;
+import ir.skpokemon.model.Pokemon;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,6 +16,7 @@ import java.util.List;
  * Created by sad.kayvanfar on 11/16/2021.
  */
 @Slf4j
+@Component
 public class PokemonCsvReader {
 
     private final static String SEPARATOR = ",";

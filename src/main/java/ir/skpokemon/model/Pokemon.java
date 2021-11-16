@@ -1,4 +1,4 @@
-package ir.skpokemon.loader.model;
+package ir.skpokemon.model;
 
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;

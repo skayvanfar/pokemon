@@ -29,7 +29,7 @@ public class PokemonController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<Pokemon>> getList() throws IOException {
+    public ResponseEntity<Iterable<Pokemon>> getList() throws IOException {
         var pokemons = pokemonService.getPokemons();
         return new ResponseEntity<>((pokemons), HttpStatus.OK);
     }

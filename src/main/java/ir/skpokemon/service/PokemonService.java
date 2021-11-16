@@ -2,6 +2,7 @@ package ir.skpokemon.service;
 
 import ir.skpokemon.model.Pokemon;
 import ir.skpokemon.reader.PokemonCsvReader;
+import ir.skpokemon.repository.PokemonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,14 +15,14 @@ import java.util.List;
 @Service
 public class PokemonService {
 
-    private PokemonCsvReader pokemonCsvReader;
+    private PokemonRepository pokemonRepository;
 
     @Autowired
-    public PokemonService(PokemonCsvReader pokemonCsvReader) {
-        this.pokemonCsvReader = pokemonCsvReader;
+    public PokemonService(PokemonRepository pokemonRepository) {
+        this.pokemonRepository = pokemonRepository;
     }
 
-    public List<Pokemon> getPokemons() throws IOException {
-        return pokemonCsvReader.read(1);
+    public Iterable<Pokemon> getPokemons() throws IOException {
+        return pokemonRepository.findAll();
     }
 }

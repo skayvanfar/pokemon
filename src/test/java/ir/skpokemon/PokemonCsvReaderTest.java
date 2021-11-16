@@ -23,14 +23,15 @@ import java.util.Objects;
  */
 public class PokemonCsvReaderTest {
 
+    private InputStream inputStream;
     private PokemonCsvReader pokemonCsvReader;
 
     @Before
     public void setUp() throws Exception {
         URL fileURL = PokemonCsvReaderTest.class.getClassLoader().getResource("test.csv");
         Path path = Paths.get(Objects.requireNonNull(fileURL).toURI());
-        InputStream reader = new FileInputStream(path.toFile());
-        pokemonCsvReader = new PokemonCsvReader(reader);
+        inputStream = new FileInputStream(path.toFile());
+        pokemonCsvReader = new PokemonCsvReader();
     }
 
     @After
@@ -40,7 +41,7 @@ public class PokemonCsvReaderTest {
     @Test
     public void testReadSizeOfCvs() throws IOException {
         int expectedCount = 4;
-        int result = pokemonCsvReader.read(1).size();
+        int result = pokemonCsvReader.read(inputStream, 1).size();
         Assert.assertEquals(expectedCount, result);
     }
 
@@ -50,7 +51,7 @@ public class PokemonCsvReaderTest {
                 new Pokemon(2L, "saeed", 33L, 67L),
                 new Pokemon(3L, "reza", 26L, 70L),
                 new Pokemon(4L, "hossein", 25L, 60L));
-        List<Pokemon> result = pokemonCsvReader.read(1);
+        List<Pokemon> result = pokemonCsvReader.read(inputStream, 1);
         Assert.assertEquals(expectedList, result);
     }
 

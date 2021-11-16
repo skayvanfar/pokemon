@@ -9,14 +9,9 @@ import java.util.List;
 public abstract class AbstractCSVParser<T> implements CSVParser<T> {
 
     protected final static String SEPARATOR = ",";
-    private InputStream inputStream;
-
-    public AbstractCSVParser(InputStream inputStream) {
-        this.inputStream = inputStream;
-    }
 
     @Override
-    public List<T> read(int skipLines) throws IOException {
+    public List<T> read(InputStream inputStream, int skipLines) throws IOException {
         List<T> list = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             String str;

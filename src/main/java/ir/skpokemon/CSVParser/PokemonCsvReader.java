@@ -16,11 +16,6 @@ import java.util.List;
 @Component
 public class PokemonCsvReader extends AbstractCSVParser<Pokemon> {
 
-
-    public PokemonCsvReader(@NonNull InputStream inputStream) {
-        super(inputStream);
-    }
-
     @Override
     protected Pokemon buildObject(String str) {
         String[] splitted = str.split(SEPARATOR);

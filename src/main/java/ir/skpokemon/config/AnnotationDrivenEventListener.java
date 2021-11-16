@@ -1,13 +1,11 @@
 package ir.skpokemon.config;
 
-import ir.skpokemon.reader.PokemonCsvReader;
+import ir.skpokemon.CSVParser.PokemonCsvReader;
 import ir.skpokemon.repository.PokemonRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEvent;
-import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ApplicationContextEvent;
-import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +25,7 @@ public class AnnotationDrivenEventListener  {
         this.pokemonRepository = pokemonRepository;
     }
 
-    @EventListener(ApplicationEvent.class)
+    @EventListener(ApplicationContextEvent.class)
     public void handleContextStart() throws IOException {
         log.info("===================================");
         pokemonRepository.saveAll(pokemonCsvReader.read(1));

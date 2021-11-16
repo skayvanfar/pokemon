@@ -1,13 +1,16 @@
 package ir.skpokemon;
 
 import ir.skpokemon.model.Pokemon;
-import ir.skpokemon.reader.PokemonCsvReader;
+import ir.skpokemon.CSVParser.PokemonCsvReader;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -26,7 +29,8 @@ public class PokemonCsvReaderTest {
     public void setUp() throws Exception {
         URL fileURL = PokemonCsvReaderTest.class.getClassLoader().getResource("test.csv");
         Path path = Paths.get(Objects.requireNonNull(fileURL).toURI());
-        pokemonCsvReader = new PokemonCsvReader(path.toFile());
+        InputStream reader = new FileInputStream(path.toFile());
+        pokemonCsvReader = new PokemonCsvReader(reader);
     }
 
     @After

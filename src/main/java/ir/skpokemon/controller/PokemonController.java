@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@RequestMapping("/v1/pokemon")
+@RequestMapping("/v1/pokemons")
 public class PokemonController {
 
     private PokemonService pokemonService;
@@ -28,7 +28,7 @@ public class PokemonController {
         this.pokemonService = pokemonService;
     }
 
-    @GetMapping("/")
+    @GetMapping()
     public ResponseEntity<Iterable<Pokemon>> getList() throws IOException {
         var pokemons = pokemonService.getPokemons();
         return new ResponseEntity<>((pokemons), HttpStatus.OK);

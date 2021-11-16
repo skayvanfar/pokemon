@@ -1,6 +1,7 @@
 package ir.skpokemon;
 
 import ir.skpokemon.model.Pokemon;
+import ir.skpokemon.reader.PokemonCsvReader;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

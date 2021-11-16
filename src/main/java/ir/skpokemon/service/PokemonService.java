@@ -1,7 +1,7 @@
 package ir.skpokemon.service;
 
-import ir.skpokemon.PokemonCsvReader;
 import ir.skpokemon.model.Pokemon;
+import ir.skpokemon.reader.PokemonCsvReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

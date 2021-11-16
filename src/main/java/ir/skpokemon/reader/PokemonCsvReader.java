@@ -1,4 +1,4 @@
-package ir.skpokemon;
+package ir.skpokemon.reader;
 
 import ir.skpokemon.model.Pokemon;
 import lombok.NonNull;

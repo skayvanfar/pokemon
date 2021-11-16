@@ -47,11 +47,19 @@ public class PokemonCsvReaderTest {
 
     @Test
     public void readWholeCsv() throws IOException {
-        List<Pokemon> expectedList = Arrays.asList(new Pokemon(1L, "ali", 37L, 88L),
-                new Pokemon(2L, "saeed", 33L, 67L),
-                new Pokemon(3L, "reza", 26L, 70L),
-                new Pokemon(4L, "hossein", 25L, 60L));
+        List<Pokemon> expectedList = Arrays.asList(new Pokemon(null, "ali", 37L, 88L),
+                new Pokemon(null, "saeed", 33L, 67L),
+                new Pokemon(null, "reza", 26L, 70L),
+                new Pokemon(null, "hossein", 25L, 60L));
         List<Pokemon> result = pokemonCsvReader.read(inputStream, 1);
+        Assert.assertEquals(expectedList, result);
+    }
+
+    @Test
+    public void readWholeCsvFilterByAgeGreaterThan30() throws IOException {
+        List<Pokemon> expectedList = Arrays.asList(new Pokemon(null, "ali", 37L, 88L),
+                new Pokemon(null, "saeed", 33L, 67L));
+        List<Pokemon> result = pokemonCsvReader.read(inputStream, 1, pokemon -> pokemon.getAge() > 30);
         Assert.assertEquals(expectedList, result);
     }
 

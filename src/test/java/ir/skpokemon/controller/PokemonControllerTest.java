@@ -49,7 +49,7 @@ public class PokemonControllerTest {
     @Test
     public void testGetList() throws Exception {
         RequestBuilder request = MockMvcRequestBuilders
-                .get("/v1/pokemon/")
+                .get("/v1/pokemons")
                 .accept(MediaType.APPLICATION_JSON);
 
          this.mockMvc.perform(request).andExpect(status().isOk()).andDo(print()).andExpect(content()

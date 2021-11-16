@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collections;
 
 @Slf4j
 @Component
@@ -33,6 +34,6 @@ public class AnnotationDrivenEventListener  {
     @EventListener(ApplicationContextEvent.class)
     public void handleContextStart() throws IOException {
         log.info("===================================");
-        pokemonRepository.saveAll(pokemonCsvReader.read(inputStream, 1));
+        pokemonRepository.saveAll(pokemonCsvReader.read(inputStream, 1, Collections.EMPTY_SET, Collections.EMPTY_SET));
     }
 }

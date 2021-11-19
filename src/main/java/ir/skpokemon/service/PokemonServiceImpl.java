@@ -3,6 +3,8 @@ package ir.skpokemon.service;
 import ir.skpokemon.model.Pokemon;
 import ir.skpokemon.repository.PokemonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +23,8 @@ public class PokemonServiceImpl implements PokemonService {
     }
 
     @Override
-    public Iterable<Pokemon> getPokemons() {
-        return pokemonRepository.findAll();
+    public Page<Pokemon> getAllPokemons(Pageable pageable) {
+        return pokemonRepository.findAll(pageable);
     }
 
     public List<Pokemon> search(String text, int page, int size) {

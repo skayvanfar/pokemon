@@ -10,6 +10,8 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -37,8 +39,8 @@ public class PokemonControllerTest {
 
     @Before
     public void setUp() throws Exception {
-        Mockito.when(pokemonServiceImpl.getPokemons()).thenReturn(
-                Arrays.asList(new Pokemon(1L, "ali", 37L, 88L)
+        Mockito.when(pokemonServiceImpl.getAllPokemons(Pageable.ofSize(20))).thenReturn(
+                (Page<Pokemon>) Arrays.asList(new Pokemon(1L, "ali", 37L, 88L)
                         ,new Pokemon(2L, "saeed", 33L, 67L)));
     }
 

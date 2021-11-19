@@ -2,6 +2,8 @@ package ir.skpokemon.model;
 
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
+import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
 
 import javax.persistence.*;
 
@@ -15,6 +17,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "POKEMON")
+@Indexed
 public class Pokemon {
 
     @Id
@@ -24,6 +27,7 @@ public class Pokemon {
 
     @NonNull
     @Column(name = "NAME", unique = true)
+    @FullTextField
     private String name;
 
     @NonNull

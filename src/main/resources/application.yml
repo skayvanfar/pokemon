@@ -10,7 +10,14 @@ spring:
       path: /h2-console
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
+      search:
+        schema-management:
+          strategy: drop-and-create
+        default:
+          directory_provider: filesystem
+          indexBase: /data/index/default
+
     dialect: org.hibernate.dialect.H2Dialect
     properties:
       hibernate:

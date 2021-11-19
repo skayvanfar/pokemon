@@ -1,7 +1,7 @@
 package ir.skpokemon.controller;
 
 import ir.skpokemon.model.Pokemon;
-import ir.skpokemon.service.PokemonService;
+import ir.skpokemon.service.PokemonServiceImpl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,11 +33,11 @@ public class PokemonControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private PokemonService pokemonService;
+    private PokemonServiceImpl pokemonServiceImpl;
 
     @Before
     public void setUp() throws Exception {
-        Mockito.when(pokemonService.getPokemons()).thenReturn(
+        Mockito.when(pokemonServiceImpl.getPokemons()).thenReturn(
                 Arrays.asList(new Pokemon(1L, "ali", 37L, 88L)
                         ,new Pokemon(2L, "saeed", 33L, 67L)));
     }

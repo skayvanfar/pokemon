@@ -14,10 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by sad.kayvanfar on 11/16/2021.
@@ -37,12 +34,12 @@ public class PokemonController {
 
     @GetMapping("/pokemons")
     public ResponseEntity<Page<Pokemon>> getAllPokemons(@PageableDefault(page = 0, size = 10, sort = "name", direction = Sort.Direction.DESC) Pageable pageable) {
-        return ResponseEntity.ok(pokemonService.getAllPokemons(pageable));
+        return ResponseEntity.ok(pokemonService.getAllPokemons(pageable)); // 200
     }
 
     @PostMapping("/pokemons")
-    public Pokemon createEmployee(@Valid @RequestBody Pokemon pokemon) {
-        return pokemonService.save(pokemon);
+    public ResponseEntity<Pokemon> createEmployee(@Valid @RequestBody Pokemon pokemon) {
+        return new ResponseEntity<>(pokemonService.save(pokemon), HttpStatus.CREATED); // 201
     }
 
     @GetMapping("/pokemons/{id}")
@@ -70,8 +67,8 @@ public class PokemonController {
         return ResponseEntity.ok("Deleted");
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<List<Pokemon>> search(@RequestParam String text) {
-        return new ResponseEntity<>(pokemonService.search(text, 0, 5), HttpStatus.OK);
+    @GetMapping("/pokemons")
+    public ResponseEntity<List<Pokemon>> search(@RequestParam String text, @RequestParam(required = false, defaultValue = "0") int page, @RequestParam(required = false, defaultValue = "10") int size) {
+        return new ResponseEntity<>(pokemonService.search(text, page, size), HttpStatus.OK);
     }
 }
